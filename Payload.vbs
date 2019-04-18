@@ -1,6 +1,6 @@
-''       │ Author     : NYAN CAT
-''       │ Name       : VBS-Shell
-''       │ Contact    : https://github.com/NYAN-x-CAT
+''       / Author     : NYAN CAT
+''       / Name       : VBS-Shell
+''       / Contact    : https://github.com/NYAN-x-CAT
 
 ''       This program is distributed for educational purposes only.
 
